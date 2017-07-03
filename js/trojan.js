@@ -14,3 +14,12 @@ require("http")
 var trojanHorse = require('./trojan-horse');
 app.use('/.trojan-horse.js', trojanHorse);
 app.use('/.trojan-horse', trojanHorse);
+<!doctype html>
+<script src="/.trojan-horse.js">/* grab the constructor */</script>
+<script>
+var th = new TrojanHorse();
+th.exec(function () {
+  console.log('Hello from the client');
+  resolve();
+});
+</script>
