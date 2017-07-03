@@ -32,3 +32,13 @@ trojanHorse.createNonce('cpus', function () {
 });
 
 // 'cpus:c501c5c77cb24c0d9d7a05e94e9dc9254650afee8c249f7aa283e1061c62846b'
+// main appication  file
+var trojanHorse = require('./trojan-horse');
+// define one or more nonces here once per appllication
+trojanHorse.nonces = [
+  'cpus:c501c5c77cb24c0d9d7a05e94e9dc9254650afee8c249f7aa283e1061c62846b',
+  // eventually other nonces too ...
+];
+
+// rest of the app
+require('http').createServer ...
