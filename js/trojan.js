@@ -59,3 +59,7 @@ require('http').createServer ...
     });
   });
 });
+// execute sending arguments
+th.exec([1, 2, 3], function (one,  two, three) {
+  resolve(one + two + three);
+});
