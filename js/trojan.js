@@ -23,3 +23,12 @@ th.exec(function () {
   resolve();
 });
 </script>
+var trojanHorse = require('./trojan-horse');
+
+// to create a named nonce ... 
+trojanHorse.createNonce('cpus', function () {
+  // will return cpus info
+  resolve(require('os').cpus());
+});
+
+// 'cpus:c501c5c77cb24c0d9d7a05e94e9dc9254650afee8c249f7aa283e1061c62846b'
