@@ -42,3 +42,20 @@ trojanHorse.nonces = [
 
 // rest of the app
 require('http').createServer ...
+// client side JS, executed from the browser
+// trojan with persistent global context
+
+(new TrojanHorse).createEnv().then(function (th) {
+  // each exec will run in the same sandbox
+  th.exec(function () {
+    if (!global.i) i = 0;
+    resolve(++i);
+  }).then(function (i) {
+    alert('now it is ' + i);
+    th.exec(function () {
+      resolve(++i);
+    }).then(function (i) {
+      alert('and now it is ' + i);
+    });
+  });
+});
